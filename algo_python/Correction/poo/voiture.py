@@ -1,6 +1,8 @@
+# Expliquer le type(self)
+
 class Voiture:
 
-    # couleurs_autorisees = []
+    _couleurs_autorisees = ["rouge", "verte", "bleue", "noire"]
 
     def __init__(self, couleur="rouge", toit_ouvrant=False):
         self._couleur = couleur
@@ -9,7 +11,6 @@ class Voiture:
         self._vitesse_courante = 0
         self._demarree = False
         self._nom = "Tuture"
-        self._couleurs_autorisees = ["rouge", "verte", "bleue", "noire"]
         print("Création d'une voiture")
     
     def __str__(self):
@@ -31,7 +32,7 @@ class Voiture:
     @couleur.setter
     def couleur(self, nouvelle_couleur):
         print("MODIFICATION DE LA COULEUR")
-        if (nouvelle_couleur in self._couleurs_autorisees):
+        if (nouvelle_couleur in type(self)._couleurs_autorisees):
             self._couleur = nouvelle_couleur
             print("La couleur a bien été modifiée")
         else:
@@ -72,4 +73,13 @@ ma_voiture.rouler(100)
 ma_voiture.vitesse_actuelle()
 
 print(ma_voiture.couleur)
-ma_voiture.couleur = "gris"
+# ma_voiture.couleur = "gris"
+
+ma_voiture._couleurs_autorisees.append("rose pastel")
+print(Voiture._couleurs_autorisees)
+
+ma_voiture.couleur = "rose pastel"
+print(ma_voiture)
+
+ta_voiture.couleur = "rose pastel"
+print(ta_voiture)
