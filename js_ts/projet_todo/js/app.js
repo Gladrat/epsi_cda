@@ -7,6 +7,17 @@ const load = "";
 
 let tasks = ["Coder en Python", "Coder en C#", "Ne pas coder en JavaScript"];
 
+// let prexifedTasks = tasks.map(task => `Tâche: ${task}`)
+tasks = tasks.map(task => {
+    return task.replace("Coder", "Développer")
+})
+
+// tasks = tasks.filter(task => {
+//     return task.length > 17
+// })
+
+console.log(tasks);
+
 // Fonctions
 
 function taskToDom(task) {

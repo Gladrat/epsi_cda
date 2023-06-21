@@ -1,12 +1,12 @@
-const firstName = "Geoffroy"
-console.log(firstName)
+// const firstName = "Geoffroy";
+// console.log(firstName);
 
 // Ceci est un commentaire
 
 /* Ceci est un
 commentaire multi ligne */
 
-let age = 25
+let age = 25;
 
 // if... else if... else
 
@@ -18,9 +18,9 @@ if (typeof age == Number && age >= 18) {
     console.log("Je suis mineur");
 }
 
-const estMajeur = (age >= 18) ? "Je suis majeur" :"Je suis mineur"
+const estMajeur = age >= 18 ? "Je suis majeur" : "Je suis mineur";
 
-const role = "user"
+const role = "user";
 
 // switch case
 
@@ -48,12 +48,12 @@ while (i < 100) {
 
 // Répéter jusqu'à
 
-i = 0
+i = 0;
 
 do {
     console.log(i + 1);
     i++;
-} while(i < 100)
+} while (i < 100);
 
 // For
 
@@ -62,7 +62,7 @@ for (let i = 0; i < 100; i++) {
     continue;
     if (i == 50) {
         break;
-        // 
+        //
     }
 }
 
@@ -71,23 +71,48 @@ for (let i = 0; i < 100; i++) {
 const nb = 12;
 let nb2 = 22;
 
-const roles = ["ADMIN", "USER", "VISITOR"]
-const lien = document.getElementsByTagName("a")
+const roles = ["ADMIN", "USER", "VISITOR"];
+const lien = document.getElementsByTagName("a");
 
-roles.push("ANONYMOUS")
+roles.push("ANONYMOUS");
 console.log(roles);
 
 function agent(firstName = "John", lastName = "Doe") {
     const nb = 3;
     console.log(`My name is ${lastName}, ${firstName} ${lastName}`);
-    return `My name is ${lastName}, ${firstName} ${lastName}`
+    return `My name is ${lastName}, ${firstName} ${lastName}`;
 }
 
-const phrase = agent("James", "Bond")
+const phrase = agent("James", "Bond");
 console.log(phrase);
 
 // Callback
 
 setTimeout(function hello() {
-    console.log("Hello world !")
-}, 3000)
+    console.log("Hello world !");
+}, 3000);
+
+const tab = ["Geoffroy", "Tom", "Elise", "Adrien", "Lisa"];
+
+for (let i = 0; i < tab.length; i++) {
+    const element = tab[i];
+    console.log(element);
+}
+
+tab.forEach((e) => console.log(e));
+
+for (let prenom of tab) {
+    console.log(prenom);
+}
+
+const buttons = document.getElementsByTagName("button");
+
+for (let button of buttons) {
+    button.addEventListener("click", (event) =>
+        console.log(`Clic sur le bouton ${event.target.textContent}`)
+    );
+}
+
+let [prenom1, ...prenomsRestants] = tab;
+console.log(prenom1);
+console.log(prenomsRestants);
