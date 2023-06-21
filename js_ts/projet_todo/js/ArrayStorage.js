@@ -2,6 +2,7 @@ class ArrayStorage {
     constructor(key_name) {
         this.key_name = key_name
         this.list = this.get()
+        this.show_storage()
     }
 
     get() {
@@ -12,8 +13,10 @@ class ArrayStorage {
     }
 
     set(task) {
-        this.list.push(task)
-        localStorage.setItem(this.key_name, JSON.stringify(this.list))
+        if (this.list.indexOf(task) === -1 && task) {
+            this.list.push(task)
+            localStorage.setItem(this.key_name, JSON.stringify(this.list))
+        }
     }
 
     clear() {
@@ -25,6 +28,9 @@ class ArrayStorage {
         this.list.splice(index, 1)
         localStorage.setItem(this.key_name, JSON.stringify(this.list))
     }
-}
 
-// const ma_liste = new ArrayStorage("ma_liste")
+    show_storage() {
+        console.log("Contenu du storage: ");
+        console.log(localStorage.getItem(this.key_name));
+    }
+}

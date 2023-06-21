@@ -1,3 +1,5 @@
+"use strict";
+
 const list = document.querySelector("#list");
 const input = document.querySelector("#input");
 const add = document.querySelector("#add");
@@ -5,23 +7,9 @@ const clear = document.querySelector("#clear");
 const url = "";
 const load = "";
 
-let tasks = ["Coder en Python", "Coder en C#", "Ne pas coder en JavaScript"];
-
-// let prexifedTasks = tasks.map(task => `Tâche: ${task}`)
-tasks = tasks.map(task => {
-    return task.replace("Coder", "Développer")
-})
-
-// tasks = tasks.filter(task => {
-//     return task.length > 17
-// })
-
-console.log(tasks);
-
-// Fonctions
+const storage = new ArrayStorage("ma_liste")
 
 function taskToDom(task) {
-    console.log(task)
     if (typeof task === "string" && task) {
         const li = document.createElement("li")
         const remove = document.createElement("button")
@@ -30,9 +18,8 @@ function taskToDom(task) {
         remove.textContent = "REMOVE"
 
         remove.addEventListener("click", event => {
+            storage.remove(task)
             remove.parentNode.remove()
-            // li.remove()
-            // list.removeChild(remove.parentNode)
         })
 
         li.append(remove)
@@ -42,6 +29,7 @@ function taskToDom(task) {
 
 function newTask(task) {
     if (task != "") {
+        storage.set(input.value)
         taskToDom(input.value)
         input.focus()
         input.value = ""
@@ -49,7 +37,7 @@ function newTask(task) {
 }
 
 // Chargement de la page
-tasks.forEach(e => taskToDom(e))
+storage.list.forEach(e => taskToDom(e))
 
 // Gestion événements globaux
 input.addEventListener("keydown", event => {
@@ -57,6 +45,10 @@ input.addEventListener("keydown", event => {
         newTask()
     }
 })
-add.addEventListener("click", event => newTask)
-clear.addEventListener("click", event => list.innerHTML = "")
+add.addEventListener("click", event => newTask())
+
+clear.addEventListener("click", () => {
+    storage.clear()
+    list.innerHTML = ""
+})
 
