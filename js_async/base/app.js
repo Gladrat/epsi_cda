@@ -1,29 +1,45 @@
 new Promise((resolve, reject) => {
-    const tab = ["Max", "Tom", "Elise"];
 
-    console.log(`Données originales: ${tab}`);
+    // ---------------
+    // Simulation d'un appel API qui prend 5 secondes pour nous renvoyer les données
+    // https://api.mon-site.fr/user
+    setTimeout(() => {
+        const infos = {
+            name: "Geoffroy",
+            email: "geoffroy@gl-conseil.dev",
+            statut: "acheteur",
+        };
+        resolve(JSON.stringify(infos));
+    }, 5000);
+    // ---------------
 
-    // setTimeout(() => {
-    //     resolve(JSON.stringify(tab));
-    // }, 5000)
-    resolve(JSON.stringify(tab));
-
-
-    // reject("Hello world of rejected !");
 })
     .then((value) => {
-        console.log("Promesse résolue");
-        console.log(`Detail de la valeur récupérée: ${value}`);
-        const liste_prenoms = JSON.parse(value);
-        console.log(liste_prenoms);
-        document.body.textContent = value
+        console.log(`Promesse n°1 résolue: ${value}`);
+        const infos = JSON.parse(value);
+        
+        return new Promise((resolve, reject) => {
+            // ---------------
+            // Simulation d'un appel API qui prend 5 secondes pour nous renvoyer les données
+            // https://api.mon-site.fr/orders
+            setTimeout(() => {
+                resolve("LISTE DES COMMANDES")
+                
+            }, 5000)
+            setTimeout(() => {
+                reject("404")
+
+            }, 2000)
+            // ---------------
+        });
     })
     .then((value) => {
-        console.log(value)
+        console.log(`Promesse n°2 résolue: ${value}`);
     })
     .catch((error) => {
         console.log("Promesse rejetée");
         console.log(`Detail de l'erreur: ${error}`);
-    });
-
-console.log("Hello world of real asynchronous !");
+    })
+    .finally(() => {
+        console.log("Fin des appels API");
+    })
