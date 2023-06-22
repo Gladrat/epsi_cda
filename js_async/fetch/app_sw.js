@@ -24,4 +24,5 @@ fetch("https://swapi.dev/api/films/2/")
         for (let car of caracters) {
             console.log(`${car.name} -> ${car.homeworld}`);
         }
+        console.log(JSON.stringify(caracters));
     })
