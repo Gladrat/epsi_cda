@@ -105,6 +105,17 @@ for (let prenom of tab) {
     console.log(prenom);
 }
 
+const tab = [12, 25, 67, 99]
+const tab_au_carre = tab.map((value) => {
+    return value**2
+})
+
+// LOL
+const tab_filtered = tab.filter(_ => [] == !{})
+
+console.log(tab_au_carre);
+console.log(tab_filtered);
+
 const buttons = document.getElementsByTagName("button");
 
 for (let button of buttons) {
