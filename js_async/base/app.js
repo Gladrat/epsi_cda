@@ -1,3 +1,9 @@
+// Une bien belle promesse !
+new Promise((resolve, reject) => resolve("lorem ipsum"))
+    .then((value) => console.log(value))
+    .catch((error) => console.log(error))
+    .finally(_ => console.log("the end"));
+
 new Promise((resolve, reject) => {
 
     // ---------------
@@ -12,7 +18,6 @@ new Promise((resolve, reject) => {
         resolve(JSON.stringify(infos));
     }, 5000);
     // ---------------
-
 })
     .then((value) => {
         console.log(`Promesse n°1 résolue: ${value}`);
