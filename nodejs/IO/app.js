@@ -22,18 +22,28 @@ console.log("Hello world of NodeJS !");
 
 async function main() {
     const async_content2 = await readFile("./datas.json", { encoding: "utf8" });
-    console.log(async_content2);
+    // console.log(async_content2);
+    // const data = JSON.parse(async_content2)
+    // console.log(data[46000].address.street);
 
-    const tab = ["Tom", "Bernard", "Elise", "Franck"];
-    tab.forEach((el) => {
-        el += "\n";
-        writeFile("demo.txt", el, { flag: "a+" });
-    });
+    // const tab = ["Tom", "Bernard", "Elise", "Franck"];
+    // tab.forEach((el) => {
+    //     el += "\n";
+    //     writeFile("demo.txt", el, { flag: "a+" });
+    // });
+
+    // https://jsonplaceholder.typicode.com/users
+    // fetch("https://jsonplaceholder.typicode.com/users")
+    //     .then(r => r.text())
+    //     .then(body => {
+    //         writeFile('users.json', body)
+    //     })
+
+    // Equivalent
+
+    const text = await fetch("https://jsonplaceholder.typicode.com/users").then(r => r.text())
+    await writeFile('users.json', text)
 }
 
 main();
 console.log("Hello world of asynchronous !");
-
-// De manière asynchrone
-// tab = ["Tom", "Bernard", "Elise", "Franck"]
-// Ecrire le contenu de ce tableau dans un fichier `demo.txt`
