@@ -4,7 +4,8 @@
   "description": "",
   "main": "api_todo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node reloader.js api_todo.js",
+    "nd": "nodemon api_todo.js"
   },
   "keywords": [],
   "author": "",
